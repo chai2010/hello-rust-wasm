@@ -4,5 +4,6 @@
 *.a
 *.o
 *.wasm
-a.out
 
+a.out
+a.out.wasm.wat

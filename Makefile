@@ -1,12 +1,5 @@
 # 版权 @2020 柴树杉。
 
-build:
-	gcc -c -o number.o ./src/vendor/number.c
-	ar rcs libnumber.a number.o
-	rustc -L . ./src/main.rs -o a.out
-	otool -L ./a.out
-	./a.out
-
 build-wasm:
 	gcc -c -o number.o ./src/vendor/number.c
 	ar rcs libnumber.a number.o
@@ -16,6 +9,13 @@ build-wasm:
 	wasm2wat a.out.wasm -o a.out.wasm.wat
 	node run.js
 	#./a.out.wasm
+
+build-native:
+	gcc -c -o number.o ./src/vendor/number.c
+	ar rcs libnumber.a number.o
+	rustc -L . ./src/main.rs -o a.out
+	otool -L ./a.out
+	./a.out
 
 libnumber: ./src/vendor/number.c  ./src/vendor/number.h
 	gcc -c -o number.o ./src/vendor/number.c
